@@ -54,11 +54,9 @@ public class GenerateRequest {
         return ttl;
     }
 
-
     public String getMetadataTTL() {
         return metadataTTL;
     }
-
 
     public String getSecretTTL() {
         return secretTTL;
