@@ -19,8 +19,8 @@
     </developers>
 
     <modules>
-        <module>onetime-secret-spi</module>
-        <module>onetime-secret-rest</module>
+        <module>onetime-java-spi</module>
+        <module>onetime-java-rest</module>
     </modules>
 
     <properties>
