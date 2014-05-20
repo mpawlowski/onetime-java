@@ -49,7 +49,7 @@
         <!-- Project -->
         <dependency>
             <groupId>com.onetimesecret</groupId>
-            <artifactId>onetime-secret-spi</artifactId>
+            <artifactId>onetime-java-spi</artifactId>
             <version>${project.version}</version>
         </dependency>
 
