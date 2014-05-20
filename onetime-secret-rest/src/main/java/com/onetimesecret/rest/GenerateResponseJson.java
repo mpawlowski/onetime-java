@@ -1,14 +1,16 @@
 package com.onetimesecret.rest;
 
-import com.onetimesecret.spi.ShareResponse;
+import com.onetimesecret.spi.GenerateResponse;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class ShareResponseJson implements ShareResponse {
+class GenerateResponseJson implements GenerateResponse {
 
     @JsonProperty("custid")
     private String custId;
+    @JsonProperty("value")
+    private String value;
     @JsonProperty("metadata_key")
     private String metadataKey;
     @JsonProperty("secret_key")
@@ -34,6 +36,14 @@ class ShareResponseJson implements ShareResponse {
 
     public void setCustId(String custId) {
         this.custId = custId;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 
     public String getMetadataKey() {
@@ -68,20 +78,20 @@ class ShareResponseJson implements ShareResponse {
         this.secretTtl = secretTtl;
     }
 
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
     public String getTtl() {
         return ttl;
     }
 
     public void setTtl(String ttl) {
         this.ttl = ttl;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getDateCreated() {

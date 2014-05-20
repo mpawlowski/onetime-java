@@ -31,6 +31,7 @@
         <org.slf4j.version>1.7.7</org.slf4j.version>
 
         <!-- Testing -->
+        <org.apache.maven.plugins.version>2.17</org.apache.maven.plugins.version>
         <org.testng.version>6.8.8</org.testng.version>
     </properties>
 
@@ -79,10 +80,23 @@
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
                 <version>${org.testng.version}</version>
+                <scope>test</scope>
             </dependency>
 
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${org.apache.maven.plugins.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
 

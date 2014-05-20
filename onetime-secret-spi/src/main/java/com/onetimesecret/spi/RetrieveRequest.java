@@ -10,16 +10,14 @@ public class RetrieveRequest {
      * @return the unique key for this secret.
      * @since 1.0
      */
-    private final String secretKey;
+    private String secretKey;
 
     /**
      * @return (if required): the passphrase is required only if the secret was create with one.
      */
-    private final String passphrase;
+    private String passphrase;
 
-    public RetrieveRequest(String secretKey, String passphrase) {
-        this.secretKey = secretKey;
-        this.passphrase = passphrase;
+    public RetrieveRequest() {
     }
 
     public String getSecretKey() {
@@ -28,5 +26,28 @@ public class RetrieveRequest {
 
     public String getPassphrase() {
         return passphrase;
+    }
+
+    public static class Builder {
+
+        private RetrieveRequest retrieveRequest;
+
+        public Builder() {
+            retrieveRequest = new RetrieveRequest();
+        }
+
+        public Builder withSecretKey(final String secretKey) {
+            retrieveRequest.secretKey = secretKey;
+            return this;
+        }
+
+        public Builder withPassphrase(final String passphrase) {
+            retrieveRequest.passphrase = passphrase;
+            return this;
+        }
+
+        public RetrieveRequest build() {
+            return retrieveRequest;
+        }
     }
 }

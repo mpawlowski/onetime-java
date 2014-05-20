@@ -21,10 +21,10 @@ public class OneTimeSecretRestImpl implements OneTimeSecret {
 
     public OneTimeSecretRestImpl(final String username, final String apiToken) {
         if (StringUtils.isBlank(username)) {
-            throw new IllegalStateException("One Time Secret username must be set");
+            throw new IllegalArgumentException("One Time Secret username must be set");
         }
         if (StringUtils.isBlank(apiToken)) {
-            throw new IllegalStateException("One Time Secret api token must be set");
+            throw new IllegalArgumentException("One Time Secret api token must be set");
         }
         authFeature = HttpAuthenticationFeature.basic(username, apiToken);
     }
@@ -58,17 +58,30 @@ public class OneTimeSecretRestImpl implements OneTimeSecret {
 
     @Override
     public GenerateResponse generate(GenerateRequest generateRequest) {
-        return null;
+        return webTarget()
+                .path("v1/generate" )
+                .queryParam("passphrase", generateRequest.getPassphrase())
+                .queryParam("ttl", generateRequest.getTtl())
+                .queryParam("metadata_ttl", generateRequest.getMetadataTtl())
+                .queryParam("secret_ttl", generateRequest.getSecretTtl())
+                .queryParam("recipient", generateRequest.getRecipient())
+                .request()
+                .post(null, GenerateResponseJson.class);
     }
 
     @Override
     public RetrieveResponse retrieve(RetrieveRequest retrieveRequest) {
-        return null;
+        return webTarget()
+                .path("v1/secret/" + retrieveRequest.getSecretKey())
+                .queryParam("secret_key", retrieveRequest.getSecretKey())
+                .queryParam("passphrase", retrieveRequest.getPassphrase())
+                .request()
+                .post(null, RetrieveResponseJson.class);
     }
 
     @Override
     public MetadataResponse metadata(MetadataRequest metadataRequest) {
-        return null;
+        throw new IllegalStateException("not implemented");
     }
 
 }

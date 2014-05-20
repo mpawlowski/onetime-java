@@ -33,7 +33,7 @@ public interface GenerateResponse {
      * @return the time-to-live (in seconds) that was specified (i.e. not the time remaining).
      * @since 1.0
      */
-    public String getTTL();
+    public String getTtl();
 
     /**
      * @return time the secret was created in unix time (UTC).

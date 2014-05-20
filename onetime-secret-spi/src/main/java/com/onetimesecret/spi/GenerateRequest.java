@@ -11,39 +11,34 @@ public class GenerateRequest {
      * and is bcrypted before being stored so we only have this value in transit.
      * @since 1.0
      */
-    private final String passphrase;
+    private String passphrase;
 
     /**
      * @return the maximum amount of time, in seconds, that the secret should survive (i.e. time-to-live). Once this
      * time expires, the secret will be deleted and not recoverable.
      * @since 1.0
      */
-    private final String ttl;
+    private String ttl;
 
     /**
      * @return The remaining time (in seconds) that the metadata has left to live.
      * @since 1.0
      */
-    private final String metadataTTL;
+    private String metadataTTL;
 
     /**
      * @return The remaining time (in seconds) that the secret has left to live.
      * @since 1.0
      */
-    private final String secretTTL;
+    private String secretTTL;
 
     /**
      * @return an email address. We will send a friendly email containing the secret link (NOT the secret itself).
      * @since 1.0
      */
-    private final String recipient;
+    private String recipient;
 
-    public GenerateRequest(String passphrase, String ttl, String metadataTTL, String secretTTL, String recipient) {
-        this.passphrase = passphrase;
-        this.ttl = ttl;
-        this.metadataTTL = metadataTTL;
-        this.secretTTL = secretTTL;
-        this.recipient = recipient;
+    private GenerateRequest() {
     }
 
     public String getPassphrase() {
@@ -54,15 +49,54 @@ public class GenerateRequest {
         return ttl;
     }
 
-    public String getMetadataTTL() {
+    public String getMetadataTtl() {
         return metadataTTL;
     }
 
-    public String getSecretTTL() {
+    public String getSecretTtl() {
         return secretTTL;
     }
 
     public String getRecipient() {
         return recipient;
+    }
+
+    public static class Builder {
+
+        private GenerateRequest generateRequest;
+
+        public Builder() {
+            generateRequest = new GenerateRequest();
+        }
+
+        public Builder withPassphrase(final String passphrase) {
+            generateRequest.passphrase = passphrase;
+            return this;
+        }
+
+        public Builder withTtl(final String ttl) {
+            generateRequest.ttl = ttl;
+            return this;
+        }
+
+        public Builder withMetadataTtl(final String metadataTtl) {
+            generateRequest.metadataTTL = metadataTtl;
+            return this;
+        }
+
+        public Builder withSecretTtl(final String secretTtl) {
+            generateRequest.passphrase = secretTtl;
+            return this;
+        }
+
+        public Builder withRecipient(final String recipient) {
+            generateRequest.recipient = recipient;
+            return this;
+        }
+
+        public GenerateRequest build() {
+            return generateRequest;
+        }
+
     }
 }
