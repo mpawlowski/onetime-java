@@ -32,6 +32,7 @@
 
         <!-- Testing -->
         <org.apache.maven.plugins.version>2.17</org.apache.maven.plugins.version>
+        <org.apache.maven.plugins.maven-compiler-plugin.version>3.1</org.apache.maven.plugins.maven-compiler-plugin.version>
         <org.testng.version>6.8.8</org.testng.version>
     </properties>
 
@@ -87,6 +88,7 @@
     </dependencyManagement>
 
     <build>
+
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -94,8 +96,24 @@
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>${org.apache.maven.plugins.version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${org.apache.maven.plugins.maven-compiler-plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 </project>
