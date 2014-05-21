@@ -3,7 +3,7 @@ onetime-java
 
 Java implementation of the https://github.com/onetimesecret/onetimesecret REST api.
 
-###Usage
+###Usage Example
 
     OneTimeSecret ots = new OneTimeSecretRestImpl("OneTime Secret username", "OneTime Secret Api Key");
     
@@ -15,7 +15,7 @@ Java implementation of the https://github.com/onetimesecret/onetimesecret REST a
     RetrieveResponse retrieveResponse = ots.retrieve(
                     new RetrieveRequest.Builder()
                             .withSecretKey(shareResponse.getSecretKey())
-                            .withPassphrase("supersecret)
+                            .withPassphrase("supersecret")
                             .build());
                             
     assertEquals(generateResponse.getValue(), retrieveResponse.getValue());
