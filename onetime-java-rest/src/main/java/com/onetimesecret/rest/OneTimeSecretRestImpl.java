@@ -81,7 +81,11 @@ public class OneTimeSecretRestImpl implements OneTimeSecret {
 
     @Override
     public MetadataResponse metadata(MetadataRequest metadataRequest) {
-        throw new IllegalStateException("not implemented");
+        return webTarget()
+                .path("v1/private/" + metadataRequest.getMetadataKey())
+                .queryParam("metadata_key", metadataRequest.getMetadataKey())
+                .request()
+                .post(null, MetadataResponseJson.class);
     }
 
 }

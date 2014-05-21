@@ -36,7 +36,7 @@ public class GenerateRequest {
      * @return an email address. We will send a friendly email containing the secret link (NOT the secret itself).
      * @since 1.0
      */
-    private String recipient;
+    private String[] recipient;
 
     private GenerateRequest() {
     }
@@ -57,7 +57,7 @@ public class GenerateRequest {
         return secretTTL;
     }
 
-    public String getRecipient() {
+    public String[] getRecipient() {
         return recipient;
     }
 
@@ -89,7 +89,7 @@ public class GenerateRequest {
             return this;
         }
 
-        public Builder withRecipient(final String recipient) {
+        public Builder withRecipient(final String... recipient) {
             generateRequest.recipient = recipient;
             return this;
         }

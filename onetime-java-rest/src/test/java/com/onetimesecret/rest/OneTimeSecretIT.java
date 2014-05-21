@@ -22,18 +22,19 @@ public class OneTimeSecretIT {
         }
 
         if (StringUtils.isBlank(apiKey)) {
-            throw new IllegalStateException("apiKey username must be configured as the system property  'onetime-java.apikey'");
+            throw new IllegalStateException("apiKey username must be configured as the system property 'onetime-java.apikey'");
         }
 
         ots = new OneTimeSecretRestImpl(username, apiKey);
     }
 
     @Test
-    public void TestGenerateRetrieve() {
+    public void testGenerateRetrieve() {
 
         GenerateRequest generateRequest = new GenerateRequest.Builder()
                 .withPassphrase("test-passphrase")
                 .build();
+
         GenerateResponse generateResponse = ots.generate(generateRequest);
         RetrieveResponse retrieveResponse = ots.retrieve(
                 new RetrieveRequest.Builder()
@@ -46,12 +47,13 @@ public class OneTimeSecretIT {
     }
 
     @Test
-    public void TestShareRetrieve() {
+    public void testShareRetrieve() {
 
         ShareRequest shareRequest = new ShareRequest.Builder()
                 .withSecret("mooooo I'm a moooose")
                 .withPassphrase("test-passhprase")
                 .build();
+
         ShareResponse shareResponse = ots.share(shareRequest);
         RetrieveResponse retrieveResponse = ots.retrieve(
                 new RetrieveRequest.Builder()
@@ -61,5 +63,27 @@ public class OneTimeSecretIT {
         );
 
         Assert.assertEquals(shareRequest.getSecret(), retrieveResponse.getValue());
+    }
+
+    @Test
+    public void testGenerateMetadata() {
+
+        GenerateResponse generateResponse = ots.generate(new GenerateRequest.Builder()
+                .withPassphrase("ooga booga")
+                .withMetadataTtl("111")
+                .withSecretTtl("222")
+                .withTtl("333")
+                .build());
+
+        MetadataResponse metadataResponse = ots.metadata(new MetadataRequest.Builder()
+                .withMetadataKey(generateResponse.getMetadataKey())
+                .build());
+
+        Assert.assertEquals(metadataResponse.getCustId(), generateResponse.getCustId());
+        Assert.assertEquals(metadataResponse.getDateCreated(), generateResponse.getDateCreated());
+        Assert.assertEquals(metadataResponse.getMetadataKey(), generateResponse.getMetadataKey());
+        Assert.assertEquals(metadataResponse.getSecretKey(), generateResponse.getSecretKey());
+        Assert.assertEquals(metadataResponse.getTtl(), generateResponse.getTtl());
+
     }
 }
