@@ -14,6 +14,7 @@ public class OneTimeSecretIT {
     @BeforeClass
     public void setUp() {
 
+        String url = "https://onetimesecret.com/api";
         String username = System.getProperty("onetime-java.username");
         String apiKey = System.getProperty("onetime-java.apikey");
 
@@ -25,7 +26,7 @@ public class OneTimeSecretIT {
             throw new IllegalStateException("apiKey username must be configured as the system property 'onetime-java.apikey'");
         }
 
-        ots = new OneTimeSecretRestImpl(username, apiKey);
+        ots = new OneTimeSecretRestImpl(url, username, apiKey);
     }
 
     @Test

@@ -15,17 +15,23 @@ import javax.ws.rs.core.Feature;
  */
 public class OneTimeSecretRestImpl implements OneTimeSecret {
 
-    private static final String URL = "https://onetimesecret.com/api";
-
+    private String url;
     private Feature authFeature;
 
-    public OneTimeSecretRestImpl(final String username, final String apiToken) {
+    public OneTimeSecretRestImpl(
+            final String url,
+            final String username,
+            final String apiToken) {
+        if (StringUtils.isBlank(url)) {
+            throw new IllegalArgumentException("One Time Secret url must be set");
+        }
         if (StringUtils.isBlank(username)) {
             throw new IllegalArgumentException("One Time Secret username must be set");
         }
         if (StringUtils.isBlank(apiToken)) {
             throw new IllegalArgumentException("One Time Secret api token must be set");
         }
+        this.url = url;
         authFeature = HttpAuthenticationFeature.basic(username, apiToken);
     }
 
@@ -33,7 +39,7 @@ public class OneTimeSecretRestImpl implements OneTimeSecret {
         return ClientBuilder.newClient()
                 .register(authFeature)
                 .register(new JacksonFeature())
-                .target(URL);
+                .target(url);
     }
 
     @Override
