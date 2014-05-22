@@ -5,7 +5,10 @@ Java implementation of the https://github.com/onetimesecret/onetimesecret REST a
 
 ###Usage Example
 
-    OneTimeSecret ots = new OneTimeSecretRestImpl("OneTime Secret username", "OneTime Secret Api Key");
+    OneTimeSecret ots = new OneTimeSecretRestImpl(
+        "https://path/to/ots/instance",
+        "ots-username",
+        "ots-apikey");
     
     GenerateResponse generateResponse = ots.generate(
                     new GenerateRequest.Builder()
