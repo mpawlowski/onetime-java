@@ -18,6 +18,10 @@
         </developer>
     </developers>
 
+    <scm>
+        <url>https://github.com/mpawlowski/onetime-java</url>
+    </scm>
+
     <modules>
         <module>onetime-java-spi</module>
         <module>onetime-java-rest</module>
