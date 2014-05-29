@@ -11,6 +11,8 @@
 
     <name>One Time Secret - Parent</name>
 
+    <description>Java implementation for the One Time Secret REST API.</description>
+
     <developers>
         <developer>
             <name>Marcin Pawlowski</name>
@@ -18,8 +20,18 @@
         </developer>
     </developers>
 
+    <licenses>
+        <license>
+            <name>The MIT License (MIT)</name>
+            <distribution>repo</distribution>
+            <url>http://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
     <scm>
-        <url>https://github.com/mpawlowski/onetime-java</url>
+        <url>scm:git:git@github.com:mpawlowski/onetime-java.git</url>
+        <connection>scm:git:git@github.com:mpawlowski/onetime-java.git</connection>
+        <developerConnection>scm:git:git@github.com:mpawlowski/onetime-java.git</developerConnection>
     </scm>
 
     <modules>
@@ -35,8 +47,9 @@
         <org.slf4j.version>1.7.7</org.slf4j.version>
 
         <!-- Testing -->
-        <org.apache.maven.plugins.version>2.17</org.apache.maven.plugins.version>
-        <org.apache.maven.plugins.maven-compiler-plugin.version>3.1</org.apache.maven.plugins.maven-compiler-plugin.version>
+        <org.apache.maven.maven-failsafe-plugin.version>2.17</org.apache.maven.maven-failsafe-plugin.version>
+        <org.apache.maven.maven-compiler-plugin.version>3.1</org.apache.maven.maven-compiler-plugin.version>
+        <org.apache.maven.maven-release-plugin.version>2.5</org.apache.maven.maven-release-plugin.version>
         <org.testng.version>6.8.8</org.testng.version>
     </properties>
 
@@ -98,12 +111,17 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>${org.apache.maven.plugins.version}</version>
+                    <version>${org.apache.maven.maven-failsafe-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${org.apache.maven.plugins.maven-compiler-plugin.version}</version>
+                    <version>${org.apache.maven.maven-compiler-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${org.apache.maven.maven-release-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -116,6 +134,11 @@
                     <source>1.7</source>
                     <target>1.7</target>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
