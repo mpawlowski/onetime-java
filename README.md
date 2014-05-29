@@ -1,5 +1,4 @@
-onetime-java
-============
+#onetime-java [![Build Status](https://drone.io/github.com/mpawlowski/onetime-java/status.png)](https://drone.io/github.com/mpawlowski/onetime-java/latest)
 
 Java implementation of the https://github.com/onetimesecret/onetimesecret REST api.
 
