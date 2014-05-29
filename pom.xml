@@ -5,7 +5,7 @@
     <groupId>com.onetimesecret</groupId>
     <artifactId>onetime-java-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <name>One Time Secret - Parent</name>
 
@@ -30,7 +30,7 @@
         <url>scm:git:git@github.com:mpawlowski/onetime-java.git</url>
         <connection>scm:git:git@github.com:mpawlowski/onetime-java.git</connection>
         <developerConnection>scm:git:git@github.com:mpawlowski/onetime-java.git</developerConnection>
-      <tag>onetime-java-parent-1.0</tag>
+      <tag>onetime-java-1.0</tag>
   </scm>
 
     <modules>
