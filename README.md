@@ -16,7 +16,7 @@ Java implementation of the https://github.com/onetimesecret/onetimesecret REST a
                     
     RetrieveResponse retrieveResponse = ots.retrieve(
                     new RetrieveRequest.Builder()
-                            .withSecretKey(shareResponse.getSecretKey())
+                            .withSecretKey(generateResponse.getSecretKey())
                             .withPassphrase("supersecret")
                             .build());
                             
