@@ -4,6 +4,16 @@ Java implementation of the https://github.com/onetimesecret/onetimesecret REST a
 
 ###Usage Example
 
+Add a dependency to the onetime-java-rest artifact.
+
+    <dependency>
+        <groupId>com.onetimesecret</groupId>
+        <artifactId>onetime-java-rest</artifactId>
+        <version>1.0</version>
+    </dependency>
+
+Then use it to generate and retrieve secrets to your liking.
+
     OneTimeSecret ots = new OneTimeSecretRestImpl(
         "https://path/to/ots/instance",
         "ots-username",
