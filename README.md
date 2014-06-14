@@ -4,7 +4,7 @@ Java implementation of the https://github.com/onetimesecret/onetimesecret REST a
 
 ###Usage Example
 
-Add a dependency to the onetime-java-rest artifact.
+Add a maven dependency to the onetime-java-rest artifact.
 
     <dependency>
         <groupId>com.onetimesecret</groupId>
